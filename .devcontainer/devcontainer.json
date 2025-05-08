@@ -1,9 +1,7 @@
 {
   "name": "Node-RED Dev",
-  "dockerComposeFile": "../docker-compose.yml",
-  "service": "nodered",
-  "workspaceFolder": "/workspaces/node-red-flow5",
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:1": {}
-  }
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "sudo apt update && sudo apt install -y docker-compose"
 }
