@@ -1,0 +1,23 @@
+name: CI - Node-RED
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repo
+        uses: actions/checkout@v3
+
+      - name: Construir imagen
+        run: docker build -t nodered-app .
+
+      - name: Ejecutar contenedor
+        run: docker run -d -p 1880:1880 --name nodered-app nodered/node-red:latest
+
+      - name: Verificar ejecución
+        run: docker exec nodered-app node-red --version
